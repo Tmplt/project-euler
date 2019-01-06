@@ -4,7 +4,16 @@
  - What is the largest prime factor of the number 600851475143?
  -}
 
- problem = 600851475143
- main = print (show ans)
+main = putStrLn (show ans)
+ans = largestFactor (600851475143 :: Integer)
 
- ans = problem
+-- By the fundamental theorem of arithmetic...
+smallestFactor n =
+    let factors = [ k | k <- [2 .. (truncate . sqrt . fromIntegral) n], mod n k == 0] in
+    case null factors of
+        False -> head factors
+        True  -> n
+
+largestFactor n =
+    let p = smallestFactor n in
+    if p < n then largestFactor (n `div` p) else n
