@@ -1,3 +1,4 @@
 haskell/*
 !haskell/*.hs
 !haskell/Makefile
+haskell/playground.hs
